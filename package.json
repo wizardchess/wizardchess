@@ -1,0 +1,27 @@
+{
+  "name": "wizardchess",
+  "version": "1.0.0",
+  "description": "Move chess pieces with voice commands",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jo-im/wizardchess.git"
+  },
+  "keywords": [
+    "wizard",
+    "magic",
+    "chess",
+    "google",
+    "speech",
+    "api"
+  ],
+  "author": "Joann Im",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jo-im/wizardchess/issues"
+  },
+  "homepage": "https://github.com/jo-im/wizardchess#readme"
+}
