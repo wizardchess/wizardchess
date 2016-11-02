@@ -23,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/jo-im/wizardchess/issues"
   },
-  "homepage": "https://github.com/jo-im/wizardchess#readme"
+  "homepage": "https://github.com/jo-im/wizardchess#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
