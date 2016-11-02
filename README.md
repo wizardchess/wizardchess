@@ -7,7 +7,7 @@
 
 ## Table of Contents
 1. [Usage](#usage)
-1. [Requirements](#requirements)
+1. [Stack](#stack)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
 1. [Contributing](#contributing)
