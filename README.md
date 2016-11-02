@@ -7,7 +7,7 @@
 
 ## Table of Contents
 1. [Usage](#usage)
-1. [Requirements](#requirements)
+1. [Stack](#stack)
 1. [Development](#development)
     1. [Installing Dependencies](#installing-dependencies)
 1. [Contributing](#contributing)
@@ -35,6 +35,7 @@ Then navigate to [localhost:3000](https://localhost:3000/) to run.
 - Express
 - Postgresql 9.5
   - Sequelize ORM
+- Redis
 
 ## Development
 ### Installing Dependencies
@@ -51,15 +52,28 @@ See [github.md](github.md) for contribution and github workflow guidelines.
 
 ## Architecture
 ### High Level Architecture
-TBD
+![](http://i.imgur.com/NeSWqNH.png)
 ### Database Schema
 Database in Postgres, using Sequelize ORM
-![](http://i.imgur.com/in8ZdTW.png)
-
+![](http://i.imgur.com/b1Es6fO.png)
 ## API
 ##### Public End Points
-|Request|URL|Response|
-|---|---|---|
+|Request|URL|Response|Privacy|
+|---|---|---|---|
+|get users by keyword|/api/users?keywords=:keywords|list of relevant users|public|
+|get user's profile|/api/users&username=:username|user profile|public|
+|get user's games|/api/games&username=:username|list of games a specific user played|public|
+|get user's achievements|/api/achievements&username=:username|list of a specific user's achievements|public|
+|get game comments|/api/comments&game=:game_id|list of a specific game's comments|public|
+|post game comment|/api/comments&game=:game_id|posted comment for a specific game|public|
+|get game summary|/api/games&game=:game_id|summary of a specific game|public|
+|post game|/api/games&challenger=:username1&opponent=:username2|saves a game, returns game id|public|
+|get duel's games|/api/games&username1=:username&username2=:username|list of games a specific user played|public|
+|get messages|/api/messages&friendship=:friendship_id|list of messages between two friends|private|
+|post message|/api/messages&friendship=:friendship_id|posted message between two friends |private|
+|get user's invitations|/api/invitations&username=:username|list of a specific user's invitations|public|
+|post user invitations|/api/invitations&username=:username|send an invitation, returns invitation id|public|
+|post user acceptance|/api/invitations&username=:username&acceptance=:acceptance|accept/deny invitation|public|
 
 ## Deployment
 This will be deployed onto AWS using Docker containers.
