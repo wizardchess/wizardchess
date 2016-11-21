@@ -1,4 +1,4 @@
-const { Sequelize, database } = require('./../sequelize');
+const { Sequelize, database } = require('./../config');
 
 const user = database.define('user', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }
