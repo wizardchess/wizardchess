@@ -1,56 +1,72 @@
 const Sequelize = require('sequelize');
-var request = require('request');
-var expect = require('chai').expect;
-var { Harry, Malfoy } = require('./dbExamples');
+const request = require('request');
+const expect = require('chai').expect;
+const { Harry, Malfoy } = require('./dbExamples');
+const User = require('./../../database/models/users');
 
 describe('Users', function() {
   // before
-  beforeEach(() => {
-    // create test database
-    const database = new Sequelize('test', '', '', {
-      dialect: 'postgres'
-    });
-
-    const User = database.define('user', {
-      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
-      username: { type: Sequelize.STRING, },
-      password: { type: Sequelize.STRING, },
-      facebook_id: { type: Sequelize.STRING, },
-      first_name: { type: Sequelize.STRING, },
-      last_name: { type: Sequelize.STRING, },
-      birthday: { type: Sequelize.DATE, },
-      date_time: { type: Sequelize.DATE, defaultValue: Sequelize.NOW, },
-    });
-
+  before(() => {
     // add harry and malfoy records
-    User.create(Harry);
-    User.create(Malfoy);
+    User.findOne({ where: Harry })
+        .then((user) => {
+          if (user === null) {
+            User.create(Harry);
+          }
+        });
 
-    database.sync();
+    User.findOne({ where: Malfoy })
+        .then((user) => {
+          if (user === null) {
+            User.create(Malfoy);
+          }
+        });
   });
     // add harry vs malfoy game record
     // add malfoy vs harry game record
     // add house cup achievement record
     // add graduation achievement record
 
-  afterEach(() => {
-    // destroy all rows
-    User.destroy();
-  });
+  const options = {
+    json: true,
+  }
 
   it("should get a user's profile", function(done) {
-    done();
+    options.url = `http://127.0.0.1:3000/api/users?username=${Harry.username}`;
+    request.get(options, (err, res, body) => {
+      expect(res.statusCode).to.equal(200);
+      expect(body).to.be.an('object');
+      for (var key in Harry) {
+        expect(body[key]).to.equal(Harry[key]);
+      }
+      done();
+    });
   });
 
   it("should get a list of user's games", function(done) {
-    done();
+    options.url = `http://127.0.0.1:3000/api/games?username=${Harry.username}`;
+    request.get(options, (err, res, body) => {
+      expect(res.statusCode).to.equal(200);
+      expect(body).to.be.an('array');
+      done();
+    });
   });
 
   it("should get a list of a user's achievements", function(done) {
-    done();
+    options.url = `http://127.0.0.1:3000/api/achievements?username=${Harry.username}`;
+    request.get(options, (err, res, body) => {
+      expect(res.statusCode).to.equal(200);
+      expect(body).to.be.an('array');
+      done();
+    });
   });
 
   it("should get a list of users by keyword", function(done) {
-    done();
+    options.url = `http://127.0.0.1:3000/api/users?keyword=`;
+    request.get(options, (err, res, body) => {
+      expect(res.statusCode).to.equal(200);
+      expect(body).to.be.an('array');
+      done();
+    });
   });
 });

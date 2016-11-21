@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
 const database = new Sequelize('wizardchess', '', '', {
-  dialect: 'postgres'
+  dialect: 'postgres',
+  logging: false,
 });
 
 module.exports = {

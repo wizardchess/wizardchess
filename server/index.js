@@ -15,3 +15,5 @@ database.sync()
           app.listen(3000, () => console.log('Server listening on port 3000.'));
         })
         .catch(err => console.log(`Unable to connect with the following error: \n${err}`));
+
+module.exports = database
