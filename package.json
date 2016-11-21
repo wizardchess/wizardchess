@@ -4,7 +4,7 @@
   "description": "Move chess pieces with voice commands",
   "main": "server/index.js",
   "scripts": {
-    "start": "webpack -d --watch & nodemon server/index.js",
+    "start": "webpack -d --watch & nodemon",
     "build": "webpack -p",
     "test": "mocha server/spec/*"
   },
