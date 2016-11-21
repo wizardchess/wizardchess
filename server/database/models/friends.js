@@ -1,7 +1,7 @@
 const { Sequelize, database } = require('./../config');
 
-const friend = database.define('friend', {
+const Friend = database.define('friend', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }
 });
 
-module.exports = friend;
+module.exports = Friend;
