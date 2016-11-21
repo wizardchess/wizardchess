@@ -4,6 +4,9 @@ const database = require('./database')
 
 app.use(express.static(__dirname + '/../public'));
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
-});
+database.sync()
+        .then(() => {
+          console.log('Database is connected.')
+          app.listen(3000, () => console.log('Server listening on port 3000.'));
+        })
+        .catch(err => console.log(`Unable to connect with the following error: ${err}`));
