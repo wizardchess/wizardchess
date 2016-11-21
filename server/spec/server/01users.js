@@ -1,5 +1,4 @@
 const Sequelize = require('sequelize');
-const User = require('./../../database/models/users');
 var request = require('request');
 var expect = require('chai').expect;
 var { Harry, Malfoy } = require('./dbExamples');
@@ -12,11 +11,23 @@ describe('Users', function() {
       dialect: 'postgres'
     });
 
-    // add harry potter user record
-    User.create(Harry)
-        .then((user) => console.log(user.first_name, user.last_name));
+    const User = database.define('user', {
+      id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true },
+      username: { type: Sequelize.STRING, },
+      password: { type: Sequelize.STRING, },
+      facebook_id: { type: Sequelize.STRING, },
+      first_name: { type: Sequelize.STRING, },
+      last_name: { type: Sequelize.STRING, },
+      birthday: { type: Sequelize.DATE, },
+      date_time: { type: Sequelize.DATE, defaultValue: Sequelize.NOW, },
+    });
+
+    // add harry and malfoy records
+    User.create(Harry);
+    User.create(Malfoy);
+
+    database.sync();
   });
-    // add malfoy user record
     // add harry vs malfoy game record
     // add malfoy vs harry game record
     // add house cup achievement record
@@ -24,18 +35,22 @@ describe('Users', function() {
 
   afterEach(() => {
     // destroy all rows
-    User.destory();
+    User.destroy();
   });
 
   it("should get a user's profile", function(done) {
+    done();
   });
 
   it("should get a list of user's games", function(done) {
+    done();
   });
 
   it("should get a list of a user's achievements", function(done) {
+    done();
   });
 
   it("should get a list of users by keyword", function(done) {
+    done();
   });
 });
