@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const database = require('./database');
+const routes = require('./routes');
+const bodyParser = require('body-parser');
 
 app.use(express.static(__dirname + '/../public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use('/api', routes);
 
 database.sync()
         .then(() => {
