@@ -4,7 +4,7 @@ const database = require('./database')
 
 app.use(express.static(__dirname + '/../public'));
 
-database.sync()
+database.sync({ force: true })
         .then(() => {
           console.log('Database is connected.')
           app.listen(3000, () => console.log('Server listening on port 3000.'));
