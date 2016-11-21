@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const User = require('./../models/users')
 
-const getUserByUsername = (req, res) => {
+const getUserByQuery = (req, res) => {
   User.findOne(req.query)
       .then((user) => {
         res.json(user);
@@ -10,5 +10,5 @@ const getUserByUsername = (req, res) => {
 }
 
 module.exports = {
-  getUserByUsername
+  getUserByQuery
 }
