@@ -1,7 +1,7 @@
 const { Sequelize, database } = require('./../config');
 
-const game = database.define('game', {
+const Game = database.define('game', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }
 });
 
-module.exports = game;
+module.exports = Game;

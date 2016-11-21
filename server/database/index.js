@@ -1,11 +1,11 @@
 // models
-const users = require('./models/users');
-const achievements = require('./models/achievements');
-const invitations = require('./models/invitations');
-const games = require('./models/games');
-const friends = require('./models/friends');
-const messages = require('./models/messages');
-const comments = require('./models/comments');
+const Users = require('./models/users');
+const Achievements = require('./models/achievements');
+const Invitations = require('./models/invitations');
+const Games = require('./models/games');
+const Friends = require('./models/friends');
+const Messages = require('./models/messages');
+const Comments = require('./models/comments');
 // database configuration
 const { database } = require('./config');
 

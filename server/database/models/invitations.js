@@ -1,7 +1,7 @@
 const { Sequelize, database } = require('./../config');
 
-const invitation = database.define('invitation', {
+const Invitation = database.define('invitation', {
   id: { type: Sequelize.INTEGER, autoIncrement: true, primaryKey: true }
 });
 
-module.exports = invitation;
+module.exports = Invitation;
