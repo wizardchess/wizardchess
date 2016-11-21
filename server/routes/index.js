@@ -1,8 +1,8 @@
 const router = require('express').Router();
+const { getUserByUsername } = require('./../database/controllers/users');
 
 router.get('/users', (req, res) => {
-  console.log(req.query);
-  res.json(req.query);
+  getUserByUsername(req, res);
 });
 
 module.exports = router;
