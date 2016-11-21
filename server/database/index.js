@@ -1,11 +1,12 @@
-const Sequelize = require('sequelize');
+// models
+const users = require('./models/users');
+const achievements = require('./models/achievements');
+const invitations = require('./models/invitations');
+const games = require('./models/games');
+const friends = require('./models/friends');
+const messages = require('./models/messages');
+const comments = require('./models/comments');
+// database configuration
+const { database } = require('./config');
 
-const database = new Sequelize('wizardchess', '', '', {
-  dialect: 'postgres'
-});
-
-database.sync()
-		 .then(() => console.log('We are connected.'))
-		 .catch(err => console.log(`Unable to connect with the following error: ${err}`));
-
-//sync connects the server (node) with the database
+module.exports = database;
